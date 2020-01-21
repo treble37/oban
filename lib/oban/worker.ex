@@ -149,7 +149,7 @@ defmodule Oban.Worker do
   With an error return or when perform has an uncaught exception or throw then the error will be
   reported and the job will be retried (provided there are attempts remaining).
   """
-  @callback perform(args :: Job.args(), job :: Job.t()) :: term()
+  @callback perform(args :: Job.args(), job :: Job.t()) :: :ok | {:error, reason :: term}
 
   @doc false
   defmacro __using__(opts) do
